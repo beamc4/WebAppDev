@@ -3,228 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ศักดิ์พล อิ่นอ้าย | Portfolio</title>
+    <title>Student Profile - Sakpol</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-attachment: fixed;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* พื้นหลังแบบ Animated Gradient */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom;
-            background-size: cover;
-            z-index: 0;
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
+            font-family: 'Prompt', sans-serif;
+            background-color: #f0f2f5;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
             padding: 20px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 60px 50px;
-            max-width: 600px;
+        .profile-card {
+            background-color: white;
             width: 100%;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            max-width: 320px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             text-align: center;
-            animation: fadeInUp 1s ease;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
+        .profile-image-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-            animation: pulse 2s ease-in-out infinite;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: #dbeafe;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .profile-image-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
         h1 {
+            font-size: 22px;
             color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 5px;
+            font-weight: 600;
         }
 
-        .subtitle {
-            color: #666;
-            font-size: 1.2em;
-            margin-bottom: 30px;
+        .student-id {
+            color: #5c2483; /* เปลี่ยนเป็นสีม่วงเพื่อให้เข้ากับ ม.พะเยา */
+            font-weight: 500;
+            font-size: 16px;
+            margin-top: 0;
         }
 
-        .info {
+        .info-section {
+            margin-top: 30px;
             text-align: left;
-            margin: 30px 0;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
             color: #555;
-            line-height: 1.8;
-        }
-
-        .info-item {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .info-item:last-child {
-            border-bottom: none;
         }
 
         .info-label {
-            font-weight: bold;
-            color: #764ba2;
-            margin-right: 10px;
+            font-weight: 600;
+            color: #333;
+            min-width: 80px; /* จัดระเบียบหัวข้อให้ตรงกัน */
+        }
+        
+        .info-value {
+            text-align: right;
+            color: #555;
         }
 
-        .social-links {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .social-btn {
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-        }
-
-        .decoration {
-            position: fixed;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 0;
-        }
-
-        .decoration:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            right: -100px;
-        }
-
-        .decoration:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            bottom: -50px;
-            left: -50px;
-        }
-
-        @media (max-width: 768px) {
-            .card {
-                padding: 40px 30px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .profile-img {
-                width: 150px;
-                height: 150px;
-                font-size: 60px;
-            }
+        .status-badge {
+            display: inline-block;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="decoration"></div>
-    <div class="decoration"></div>
-    
-    <div class="container">
-        <div class="card">
-            <div class="profile-img">
-                👨‍💻
+
+    <div class="profile-card">
+        
+        <div class="profile-image-container">
+            <svg class="profile-image-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="#dbeafe"/>
+                <path d="M40,220 C40,160 160,160 160,220" fill="#3b82f6"/>
+                <rect x="85" y="130" width="30" height="40" fill="#ffdbac"/>
+                <circle cx="100" cy="110" r="45" fill="#ffdbac"/>
+                <path d="M50,100 C50,50 150,50 150,100 C150,115 140,85 100,85 C60,85 50,115 50,100" fill="#1f2937"/>
+                <circle cx="85" cy="110" r="5" fill="#333"/>
+                <circle cx="115" cy="110" r="5" fill="#333"/>
+                <path d="M90,125 Q100,132 110,125" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+        </div>
+        
+        <h1>ศักดิ์พล อิ่นอ้าย</h1>
+        <p class="student-id">รหัสนิสิต: 67024874</p>
+        
+        <span class="status-badge">กำลังศึกษา</span>
+
+        <div class="info-section">
+            <div class="info-row">
+                <span class="info-label">คณะ</span>
+                <span class="info-value">เทคโนโลยีสารสนเทศ<br>และการสื่อสาร</span>
             </div>
-            
-            <h1>ศักดิ์พล อิ่นอ้าย</h1>
-            <p class="subtitle">Sakpon In-ai</p>
-            
-            <div class="info">
-                <div class="info-item">
-                    <span class="info-label">🎯 สถานะ:</span>
-                    <span>พร้อมสำหรับโอกาสใหม่ๆ</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">💼 ความสนใจ:</span>
-                    <span>เทคโนโลยี | นวัตกรรม | การพัฒนา</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">🌟 คุณสมบัติ:</span>
-                    <span>มุ่งมั่น | สร้างสรรค์ | ใฝ่เรียนรู้</span>
-                </div>
+            <div class="info-row">
+                <span class="info-label">สาขาวิชา</span>
+                <span class="info-value">วิทยาการคอมพิวเตอร์</span>
             </div>
-            
-            <div class="social-links">
-                <a href="#" class="social-btn">ติดต่อฉัน</a>
-                <a href="#" class="social-btn">ผลงาน</a>
+            <div class="info-row">
+                <span class="info-label">สถาบัน</span>
+                <span class="info-value">มหาวิทยาลัยพะเยา</span>
             </div>
         </div>
     </div>
+
 </body>
 </html>
